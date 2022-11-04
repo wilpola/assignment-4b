@@ -1,3 +1,9 @@
+// math.js
+// @author: Ville Wilpola
+// Contains all the mathematical functions 
+// --> The f in every function parameter stands for the setter function
+
+// A function to handle addition operation
 export const handleAddition = (f) => {
   let num1 = document.getElementById("num1").value;
   let num2 = document.getElementById("num2").value;
@@ -11,6 +17,7 @@ export const handleAddition = (f) => {
   }
 };
 
+// A function to handle subtraction operation
 export const handleSubtraction = (f) => {
   let num1 = document.getElementById("num1").value;
   let num2 = document.getElementById("num2").value;
@@ -23,6 +30,7 @@ export const handleSubtraction = (f) => {
   }
 };
 
+// A function to handle multiplication operation
 export const handleMultiplication = (f) => {
   let num1 = document.getElementById("num1").value;
   let num2 = document.getElementById("num2").value;
@@ -35,6 +43,7 @@ export const handleMultiplication = (f) => {
   }
 };
 
+// A function to handle division operaiton
 export const handleDivision = (f) => {
   let num1 = document.getElementById("num1").value;
   let num2 = document.getElementById("num2").value;
@@ -47,6 +56,7 @@ export const handleDivision = (f) => {
   }
 };
 
+// A function to handle remainder operation
 export const handleRemainder = (f) => {
   let num1 = document.getElementById("num1").value;
   let num2 = document.getElementById("num2").value;

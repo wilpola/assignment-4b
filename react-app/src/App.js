@@ -1,8 +1,11 @@
-// This file houses the main application
-// @Author
+// App.js
+// @author: Ville Wilpola
+// Houses the main app runtime
+
+//importing components and styles
 import { useState } from "react";
-import "./App.scss";
 import { CalculationForm } from "./components/calculationForm";
+import "./App.scss";
 
 // import Utility functions
 import {
@@ -18,9 +21,10 @@ function App() {
   const [operation, setOperation] = useState("");
   const [equals, setEquals] = useState(0);
 
+
   const handleSelection = (e) => {
-    setOperation(e.target.value);
-    setEquals("");
+    setOperation(e.target.value);   // set operator to target operator
+    setEquals("");                  // set state to empty
   };
 
   // renders the app
