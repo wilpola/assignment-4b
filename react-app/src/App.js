@@ -78,7 +78,7 @@ function App() {
   return (
     <div className="App">
       <h1> Simple Calculator app</h1>
-      <select onChange={(e) => handleSelection(e)}>
+      <select data-testid='selector' onChange={(e) => handleSelection(e)}>
         <option>Choose operation</option>
         <option>Addition</option>
         <option>Subtraction</option>
@@ -93,11 +93,11 @@ function App() {
             <h2> Addition</h2>
             <div className="input-group">
               <label htmlFor="num1">First number</label>
-              <input placeholder="1st number" id="num1" type={"number"} />
+              <input data-testid='addition1' placeholder="1st number" id="num1" type={"number"} />
             </div>
             <div className="input-group">
               <label htmlFor="num2">Second number</label>
-              <input placeholder="2nd number" id="num2" type={"number"} />
+              <input data-testid='addition2' placeholder="2nd number" id="num2" type={"number"} />
             </div>
             <button onClick={() => handleAddition()}>Calculate</button>
             {equals}

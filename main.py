@@ -10,7 +10,7 @@ class main():
     # Set up the GUI 
     root = tk.Tk()                    # Creates the window
     root.title('Simple Calculator')   # Set the window title
-    root.geometry("400x500+10+20")    # Sets the window size
+    root.geometry("700x500+10+20")    # Sets the window size
 
 
     def setFrame(self, frame):

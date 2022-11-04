@@ -1,8 +1,10 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent, getByTestId } from '@testing-library/react';
+import { renderIntoDocument } from 'react-dom/test-utils';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('Selector', () => {
+  const {container } = render(<App />);
+  const selector = getByTestId(container, 'selector');
+  expect(selector).toBeInTheDocument(selector);
 });
+
