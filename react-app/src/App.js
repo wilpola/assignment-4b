@@ -2,6 +2,16 @@
 // @Author
 import { useState } from "react";
 import "./App.scss";
+import { CalculationForm } from "./components/calculationForm";
+
+// import Utility functions
+import {
+  handleAddition,
+  handleSubtraction,
+  handleDivision,
+  handleMultiplication,
+  handleRemainder,
+} from "./utils";
 
 function App() {
   // stores the operation selection
@@ -13,72 +23,11 @@ function App() {
     setEquals("");
   };
 
-  const handleAddition = () => {
-    let num1 = document.getElementById("num1").value;
-    let num2 = document.getElementById("num2").value;
-
-    if (num1 === "" || num2 === "") {
-      alert("Please fill both of the numbers");
-      return;
-    } else {
-      let add = Number(num1) + Number(num2);
-      setEquals(add);
-    }
-  };
-
-  const handleSubtraction = () => {
-    let num1 = document.getElementById("num1").value;
-    let num2 = document.getElementById("num2").value;
-
-    if (num1 === "" || num2 === "") {
-      alert("Please fill both of the numbers");
-      return;
-    } else {
-      setEquals(Number(num1) - Number(num2));
-    }
-  };
-
-  const handleMultiplication = () => {
-    let num1 = document.getElementById("num1").value;
-    let num2 = document.getElementById("num2").value;
-
-    if (num1 === "" || num2 === "") {
-      alert("Please fill both of the numbers");
-      return;
-    } else {
-      setEquals(Number(num1) * Number(num2));
-    }
-  };
-
-  const handleDivision = () => {
-    let num1 = document.getElementById("num1").value;
-    let num2 = document.getElementById("num2").value;
-
-    if (num1 === "" || num2 === "") {
-      alert("Please fill both of the numbers");
-      return;
-    } else {
-      setEquals(Number(num1) / Number(num2));
-    }
-  };
-
-  const handleRemainder = () => {
-    let num1 = document.getElementById("num1").value;
-    let num2 = document.getElementById("num2").value;
-
-    if (num1 === "" || num2 === "") {
-      alert("Please fill both of the numbers");
-      return;
-    } else {
-      setEquals(Number(num1) % Number(num2));
-    }
-  };
-
   // renders the app
   return (
     <div className="App">
       <h1> Simple Calculator app</h1>
-      <select data-testid='selector' onChange={(e) => handleSelection(e)}>
+      <select data-testid="selector" onChange={(e) => handleSelection(e)}>
         <option>Choose operation</option>
         <option>Addition</option>
         <option>Subtraction</option>
@@ -87,96 +36,52 @@ function App() {
         <option>Remainder</option>
       </select>
 
-      {operation === "Addition" && (
-        <form onSubmit={(e) => e.preventDefault()}>
-          <div className="calculation-container">
-            <h2> Addition</h2>
-            <div className="input-group">
-              <label htmlFor="num1">First number</label>
-              <input data-testid='addition1' placeholder="1st number" id="num1" type={"number"} />
-            </div>
-            <div className="input-group">
-              <label htmlFor="num2">Second number</label>
-              <input data-testid='addition2' placeholder="2nd number" id="num2" type={"number"} />
-            </div>
-            <button onClick={() => handleAddition()}>Calculate</button>
-            {equals}
-          </div>
-        </form>
-      )}
+      {/* if nothing has been selected */}
       {operation === "" && <></>}
 
+      {/* If Addition has been selected */}
+      {operation === "Addition" && (
+        <CalculationForm
+          title={"Addition"}
+          handler={() => handleAddition(setEquals)}
+          equals={equals}
+        />
+      )}
+
+      {/* If Subtraction has been selected */}
       {operation === "Subtraction" && (
-        <form onSubmit={(e) => e.preventDefault()}>
-          <div className="calculation-container">
-            <h2> Subtraction</h2>
-            <div className="input-group">
-              <label htmlFor="num1">First number</label>
-              <input placeholder="1st number" id="num1" type={"number"} />
-            </div>
-            <div className="input-group">
-              <label htmlFor="num2">Second number</label>
-              <input placeholder="2nd number" id="num2" type={"number"} />
-            </div>
-            <button onClick={() => handleSubtraction()}>Calculate</button>
-            <h3 className='result'>{equals}</h3>
-          </div>
-        </form>
+        <CalculationForm
+          title={"Subtraction"}
+          handler={() => handleSubtraction(setEquals)}
+          equals={equals}
+        />
       )}
 
+      {/* If Multiplication has been selected */}
       {operation === "Multiplication" && (
-        <form onSubmit={(e) => e.preventDefault()}>
-          <div className="calculation-container">
-            <h2> Multiplication</h2>
-            <div className="input-group">
-              <label htmlFor="num1">First number</label>
-              <input placeholder="1st number" id="num1" type={"number"} />
-            </div>
-            <div className="input-group">
-              <label htmlFor="num2">Second number</label>
-              <input placeholder="2nd number" id="num2" type={"number"} />
-            </div>
-            <button onClick={() => handleMultiplication()}>Calculate</button>
-            <h3 className='result'>{equals}</h3>
-          </div>
-        </form>
+        <CalculationForm
+          title={"Multiplication"}
+          handler={() => handleMultiplication(setEquals)}
+          equals={equals}
+        />
       )}
 
+      {/* If Division has been selected */}
       {operation === "Division" && (
-        <form onSubmit={(e) => e.preventDefault()}>
-          <div className="calculation-container">
-            <h2> Division</h2>
-            <div className="input-group">
-              <label htmlFor="num1">First number</label>
-              <input placeholder="1st number" id="num1" type={"number"} />
-            </div>
-            <div className="input-group">
-              <label htmlFor="num2">Second number</label>
-              <input placeholder="2nd number" id="num2" type={"number"} />
-            </div>
-            <button onClick={() => handleDivision()}>Calculate</button>
-            <h3 className='result'>{equals}</h3>
-          </div>
-        </form>
+        <CalculationForm
+          title={"Division"}
+          handler={() => handleDivision(setEquals)}
+          equals={equals}
+        />
       )}
 
+      {/* If Remainder has been selected */}
       {operation === "Remainder" && (
-        <form onSubmit={(e) => e.preventDefault()}>
-          <div className="calculation-container">
-            <h2> Is your number even</h2>
-            <div className="input-group">
-              <label htmlFor="num1">First number</label>
-              <input placeholder="1st number" id="num1" type={"number"} />
-            </div>
-            <div className="input-group">
-              <label htmlFor="num2">Second number</label>
-              <input placeholder="2nd number" id="num2" type={"number"} />
-            </div>
-
-            <button onClick={() => handleRemainder()}>Calculate</button>
-            <h3 className='result'>{equals}</h3>
-          </div>
-        </form>
+        <CalculationForm
+          title={"Remainder"}
+          handler={() => handleRemainder(setEquals)}
+          equals={equals}
+        />
       )}
     </div>
   );
