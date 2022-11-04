@@ -1,0 +1,29 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.calculation-container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  label {
+    text-align: left;
+  }
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+  }
+  button {
+    height: 35px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
