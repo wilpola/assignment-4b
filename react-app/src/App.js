@@ -5,7 +5,7 @@ import './App.scss'
 
 function App() {
   // stores the operation selection
-  const [operation, setOperation] = useState('Addition')
+  const [operation, setOperation] = useState('')
   const [equals, setEquals] = useState(0)
 
   const handleSelection = (e) => {
@@ -101,6 +101,8 @@ function App() {
           {equals}
         </div>
       )}
+      {operation === "" &&
+      <></>}
 
       {operation === 'Subtraction' && (
         <div className="calculation-container">
